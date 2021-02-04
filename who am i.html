@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,9 +19,34 @@
         })
 
         }
-        randomName();
         setInterval(() => {
             randomName();
+        }, 1000);
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randome Person</title>
+</head>
+    <h2 id="user-name"></h2>
+<body>
+    <script>
+        function randomUser(){
+            fetch("https://randomuser.me/api")
+            .then( res => res.json())
+            .then(data => {
+            const user = data.results[0];
+            const name = user.name;
+            const userName = `${name.title} ${name.first} ${name.last}`
+            document.getElementById("user-name").innerText = userName;
+            })
+        }
+        setInterval(() => {
+            randomUser();
         }, 1000);
     </script>
 </body>
